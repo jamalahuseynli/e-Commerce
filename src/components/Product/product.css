@@ -1,0 +1,24 @@
+.card img{
+    height: 200px;
+    object-fit: contain;
+}
+
+.card svg{
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.card .btn-dark{
+    background-color: #1D1E18;
+}
+
+.btn-dark:hover{
+    opacity: 0.9;
+}
+
+.card-img-top{
+    padding: 20px;
+}
