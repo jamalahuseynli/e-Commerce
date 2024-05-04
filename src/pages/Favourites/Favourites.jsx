@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Favourites = (fav,setFav) => {
+const Favourites = ({fav,setFav}) => {
 
-    console.log(fav);
+    console.log(fav,"favvvv");
   return (
     <div className='container'>
     </div>

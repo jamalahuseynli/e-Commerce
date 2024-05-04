@@ -1,20 +1,17 @@
 import React, { useState } from 'react'
 import './product.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FaRegHeart } from "react-icons/fa";
 
-const ProductCard = ({setFav,products}) => {
-  const { title, description, image, price } = products
+const ProductCard = ({fav,setFav,products}) => {
+  const navigate = useNavigate();
+  const {id, title, description, image, price } = products
 
-
-  console.log(products,"product card")
-
-  console.log(setFav())
 
   const addFav=()=>{
-    console.log(title,"title")
-    // setFav(products)
+    setFav(products)
   }
+  
 
   return (
     <div className="col-lg-3">
@@ -25,7 +22,7 @@ const ProductCard = ({setFav,products}) => {
           <h5 className="card-title">{title.length > 20 ? title.slice(0, 20) + "..." : title}</h5>
           <div className="row d-flex align-items-center">
             <div className="col-lg-8 ">
-              <Link to="/" className="btn btn-dark">Go to product &#10095; </Link>
+              <Link to={`/products/${id}`}  className="btn btn-dark">Go to product &#10095; </Link>
             </div>
             <div className="col-lg-4 text-end">
               <span>{price} ₼</span>

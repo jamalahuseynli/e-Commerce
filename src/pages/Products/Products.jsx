@@ -3,7 +3,7 @@ import axios from 'axios';
 import ProductCard from '../../components/Product/ProductCard';
 import Spinner from '../../components/Spinner/Spinner'
 
-const Products = (setFav,fav) => {
+const Products = ({setFav,fav}) => {
 
   const [products, setProducts] = useState()
 

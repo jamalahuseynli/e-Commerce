@@ -7,10 +7,11 @@ import ErrorNotFound from './pages/Error/ErrorNotFound'
 import Contact from './pages/Contact/Contact';
 import Favourites from './pages/Favourites/Favourites';
 import { useState } from 'react';
+import Details from './pages/Details/Details';
 
 
 function App() {
-  const [fav, setFav]=useState({})
+  const [fav, setFav]=useState([])
 
   return (
     <div className="App">
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<HomePage/>}/>
           <Route path="/products" element={<Products fav={fav} setFav={setFav}/>}/>
           <Route path="/contact" element={<Contact/>}/>
+          <Route path="/products/:id" element={<Details/>}/>
           <Route path='/favorites' element={<Favourites fav={fav} setFav={setFav}/>}/>
           <Route path="*" element={<ErrorNotFound/>}/>
         </Routes>
