@@ -3,10 +3,11 @@ import axios from 'axios';
 import ProductCard from '../../components/Product/ProductCard';
 import Spinner from '../../components/Spinner/Spinner'
 
-const Products = () => {
+const Products = (setFav,fav) => {
 
   const [products, setProducts] = useState()
 
+  console.log(fav,"products page")
   //sorgu bidefe gedir products page acilanda mounting-> [] qoyuruq ki hec bir stateden asili olmasin
   useEffect(() => {
     const getProducts = async () => {
@@ -25,7 +26,7 @@ const Products = () => {
         {
           products ? products.map(item => {
             return (
-              <ProductCard products={item} key={item.id} />
+              <ProductCard setFav={setFav} fav={fav} products={item} key={item.id} />
             )
           })
           : <Spinner/>
