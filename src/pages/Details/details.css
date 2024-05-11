@@ -1,0 +1,23 @@
+.details svg{
+    font-size: 28px;
+    cursor: pointer;
+    position: static;
+}
+
+.details .col-lg-4{
+    position: relative;
+}
+
+.details button{
+    color: white;
+    background-color: rgb(13, 203, 155);
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+
+.price-details{
+    font-weight: 700;
+    font-size: 24px;
+}

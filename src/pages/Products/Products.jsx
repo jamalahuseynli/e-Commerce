@@ -2,34 +2,71 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import ProductCard from '../../components/Product/ProductCard';
 import Spinner from '../../components/Spinner/Spinner'
+import Search from '../../components/Search/Search';
+import Filter from '../../components/Filter/Filter';
 
-const Products = ({setFav,fav}) => {
+const Products = ({ setFav, fav }) => {
 
   const [products, setProducts] = useState()
+  const [categories, setCategory] = useState([])
+  const [categorytyped,setCategorytyped]=useState("")
+  const [searchItem,setSearchItem]=useState("")
+  const foundItem=products.filter((item=>{item.toLowerCase().includes(searchItem.toLowerCase())}))
 
-  console.log(fav,"products page")
   //sorgu bidefe gedir products page acilanda mounting-> [] qoyuruq ki hec bir stateden asili olmasin
   useEffect(() => {
-    const getProducts = async () => {
-      await axios.get('https://fakestoreapi.com/products')
-        .then(response => setProducts(response.data))
-        .catch(error => console.log(error))
-    }
+    
 
-    getProducts()
+    const getCategories = async () => {
+      try {
+        const  {data}  = await axios.get('https://fakestoreapi.com/products/categories')
+        setCategory(data)
+      } catch (error) {
+        
+      }
+    }
+    
+    getCategories()
 
   }, []);
 
+
+  useEffect(() => {
+    
+    const changeHandler = async () => {
+      try {
+        if(categorytyped){
+          const {data}=await axios.get(`https://fakestoreapi.com/products/category/${categorytyped}`)
+          setProducts(data)
+        }
+        else{
+          const {data}=await axios.get(`https://fakestoreapi.com/products`)
+          setProducts(data)
+        }
+      } catch (error) {
+        console.log(error.message)
+      }
+    }
+
+    changeHandler()
+  }, [categorytyped]);
+
   return (
-    <div className='container mt-4'>
+    <div className='container mt-5 mb-5'>
+      <div className="row">
+        <div className="col">
+          <Filter setCategorytyped={setCategorytyped} categories={categories}/>
+        </div>
+      </div>
+
       <div className="row gy-3">
         {
-          products ? products.map(item => {
+          searchItem ? searchItem.map(item => {
             return (
               <ProductCard setFav={setFav} fav={fav} products={item} key={item.id} />
             )
           })
-          : <Spinner/>
+            : <Spinner />
         }
       </div>
     </div>

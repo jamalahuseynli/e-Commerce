@@ -1,0 +1,59 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.admin-layout aside {
+    background-color: #1D1E18;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 0 0 60px;
+    gap: 15px;
+    position: fixed;
+    width: inherit;
+}
+
+.admin-layout .active::before {
+    content: '>  ';
+    color: rgb(13, 203, 155);
+}
+
+.admin-layout aside a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+
+}
+
+table {
+    text-align: center;
+}
+
+table tr {
+    vertical-align: middle;
+}
+
+.categories .actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+td svg {
+    font-size: 20px;
+}
+
+
+.products .actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+
+.w-30{
+    width: 45%;
+}
