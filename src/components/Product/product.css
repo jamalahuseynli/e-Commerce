@@ -3,6 +3,10 @@
     object-fit: contain;
 }
 
+a{
+    text-decoration: none;
+}
+
 .card svg{
     position: absolute;
     top: 20px;

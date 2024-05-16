@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Spinner from '../../components/Spinner/Spinner';
 import { CiEdit, CiTrash } from "react-icons/ci";
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 
 const Products = () => {
 
   const [productList, setProductList] = useState([])
   const [count, setCount] = useState(5)
+  const navigate=useNavigate()
 
   useEffect(() => {
     const getProductList = async () => {
@@ -31,6 +33,7 @@ const Products = () => {
     try {
       await axios.delete(`https://fakestoreapi.com/products/${id}`)
       toast.success("Deleted successfully!")
+      navigate('/dashboard')
     } catch (error) {
       console.log(error.message)
       toast.error("Couldn't Delete!")
@@ -83,8 +86,7 @@ const Products = () => {
       </table>
         : <Spinner />}
       <button onClick={moreHandler} className='btn-dark btn mb-5'>Load more</button>
-      <Toaster position="top-center"
-        reverseOrder={false} />
+      
     </div>
 
   )

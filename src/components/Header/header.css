@@ -8,6 +8,10 @@
 
 header{
     background-color: #1D1E18;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
 }
 
 .logo svg{
@@ -29,4 +33,20 @@ header a{
     text-decoration: none;
     color: white;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.nav-l{
+    position: relative;
+}
+
+.nav-l span{
+    position: absolute;
+    top: 10px;
+    right: -10px;
+    color: #1D1E18;
+    background-color: white;
+    padding: 0 6px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 600;
 }
