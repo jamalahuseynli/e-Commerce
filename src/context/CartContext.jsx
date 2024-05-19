@@ -31,8 +31,14 @@ const CartProvider=({children})=>{
         toast.error("Product deleted successfully!")
     }
 
+    const updateProductCount=(e,id)=>{
+        const updatedProduct=items.find(item=>item.id==id)
+        updatedProduct.count=e.target.value
+        setItems([...items])
+    }
+
     return(
-        <CartContext.Provider value={{items, addToCart, removefromCart}}>
+        <CartContext.Provider value={{items, addToCart, removefromCart, updateProductCount}}>
             {children}
         </CartContext.Provider>
     )

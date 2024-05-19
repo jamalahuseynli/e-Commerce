@@ -6,11 +6,12 @@ import './basket.css'
 
 const Basket = () => {
 
-  const { items, removefromCart } = useContext(CartContext)
+  const { items, removefromCart, updateProductCount } = useContext(CartContext)
 
   if (items.length === 0) {
     return <div className='alert alert-danger w-25 mt-5 m-auto'>Cart is empty</div>
   }
+
 
   console.log(items);
 
@@ -34,7 +35,7 @@ const Basket = () => {
                   </div>
 
                   <div className="prod-total">
-                    <input type="number" defaultValue={item.count}/>
+                    <input type="number" onChange={(e)=>updateProductCount(e,item.id)} defaultValue={item.count}/>
                   </div>
                   <div className="price-cat-label">
                     <p>Category: <span>{item.category}</span></p>
