@@ -3,11 +3,10 @@ import './product.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaRegHeart } from "react-icons/fa";
 import { CartContext } from '../../context/CartContext';
-import toast from 'react-hot-toast';
 
 const ProductCard = ({ fav, setFav, products }) => {
   const navigate = useNavigate();
-  const { id, title, description, image, price } = products
+  const { id, title, description, image, price,category } = products
   const { addToCart } = useContext(CartContext)
 
   const basketHandler=()=>{
@@ -16,9 +15,10 @@ const ProductCard = ({ fav, setFav, products }) => {
       title:title,
       image:image,
       price:price,
+      description:description,
+      category:category,
       count:1
     })
-    toast.success("Product added to cart!")
   }
 
 
