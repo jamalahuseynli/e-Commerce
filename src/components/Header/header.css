@@ -50,3 +50,7 @@ header a{
     font-size: 12px;
     font-weight: 600;
 }
+
+.nav-l:last-child svg{
+    font-size: 20px;
+}

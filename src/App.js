@@ -3,20 +3,23 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { useState } from 'react';
 import PublicRoutes from './routes/PublicRoutes'
 import AdminRoutes from './routes/AdminRoutes';
-import {Toaster} from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
+import { AuthProvider } from './context/AuthContext';
 
-if (localStorage.getItem("products")===null){
+if (localStorage.getItem("products") === null) {
   localStorage.setItem("products", JSON.stringify([]))
 }
 
 function App() {
 
-  const [isAuth, setIsAuth]=useState(false)
+  const [isAuth, setIsAuth] = useState(false)
 
   return (
     <div className="App">
       <BrowserRouter>
-        {isAuth ? <AdminRoutes/> : <PublicRoutes/>}
+        <AuthProvider>
+          {<PublicRoutes isAuth={isAuth} />}
+        </AuthProvider>
       </BrowserRouter>
 
       <Toaster position="top-center"

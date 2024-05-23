@@ -5,6 +5,8 @@ import { MdOutlineYoutubeSearchedFor } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa";
 import { BsBasket2Fill } from "react-icons/bs";
 import { CartContext } from '../../context/CartContext';
+import { MdOutlineAccountCircle } from "react-icons/md";
+
 
 const Header = () => {
 
@@ -29,7 +31,9 @@ const Header = () => {
                             <NavLink className="nav-l" to="/products">Products</NavLink>
                             <NavLink className="nav-l" to="/contact">Contact</NavLink>
                             <NavLink className="nav-l" to="/favorites"> <FaRegHeart /></NavLink>
-                            <NavLink className="nav-l" to="/basket"> <BsBasket2Fill /><span>{items.length}</span></NavLink>
+                            <NavLink className="nav-l" to="/basket"> <BsBasket2Fill /><span>{items.length ? items.length :null}</span></NavLink>
+                            <NavLink className="nav-l" to="/auth/register"> <MdOutlineAccountCircle /></NavLink>
+                        
                         </nav>
                     </div>
                 </div>

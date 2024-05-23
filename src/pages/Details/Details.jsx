@@ -5,6 +5,7 @@ import axios from 'axios'
 import { FaRegHeart } from "react-icons/fa";
 import './details.css'
 import { CartContext } from '../../context/CartContext';
+import apiURLs from '../../api/api';
 
 const Details = () => {
   let { id } = useParams();
@@ -14,7 +15,7 @@ const Details = () => {
   useEffect(() => {
     const getProductById = async (id) => {
       try {
-        const { data } = await axios.get(`https://fakestoreapi.com/products/${id}`)
+        const { data } = await axios.get(`${apiURLs.productAPI}/${id}`)
         setItem(data)
 
       } catch (error) {

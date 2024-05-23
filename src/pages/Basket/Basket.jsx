@@ -12,7 +12,6 @@ const Basket = () => {
     return <div className='alert alert-danger w-25 mt-5 m-auto'>Cart is empty</div>
   }
 
-
   console.log(items);
 
   return (
@@ -55,6 +54,7 @@ const Basket = () => {
         <div className="col-3">
           <div className="card p-3">
             <h4>Total Products on Cart</h4>
+            
             <div className="total-price my-3">
               Total Price: <span></span>
             </div>

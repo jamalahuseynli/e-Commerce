@@ -5,6 +5,7 @@ import Spinner from '../../components/Spinner/Spinner'
 // import Search from '../../components/Search/Search';
 import Filter from '../../components/Filter/Filter';
 import { CartContext } from '../../context/CartContext';
+import apiURLs from '../../api/api';
 
 const Products = ({ setFav, fav }) => {
 
@@ -21,7 +22,7 @@ const Products = ({ setFav, fav }) => {
 
     const getCategories = async () => {
       try {
-        const { data } = await axios.get('https://fakestoreapi.com/products/categories')
+        const { data } = await axios.get(apiURLs.categoryAPI)
         setCategory(data)
       } catch (error) {
 
@@ -38,11 +39,11 @@ const Products = ({ setFav, fav }) => {
     const changeHandler = async () => {
       try {
         if (categorytyped) {
-          const { data } = await axios.get(`https://fakestoreapi.com/products/category/${categorytyped}`)
+          const { data } = await axios.get(`${apiURLs.productAPI}/category/${categorytyped}`)
           setProducts(data)
         }
         else {
-          const { data } = await axios.get(`https://fakestoreapi.com/products`)
+          const { data } = await axios.get(apiURLs.productAPI)
           setProducts(data)
         }
       } catch (error) {

@@ -5,10 +5,11 @@ const CartContext=createContext()
 
 const CartProvider=({children})=>{
     const [items,setItems]=useState(JSON.parse(localStorage.getItem("products")))
-    
+    const [totalPrice, setTotalPrice]=useState()
+
     useEffect(()=>{
         localStorage.setItem("products", JSON.stringify(items))
-
+        
     },[items])
 
     const addToCart=(product)=>{
@@ -24,6 +25,8 @@ const CartProvider=({children})=>{
 
         }
     }
+
+
 
     const removefromCart=(id)=>{
         const filteredItems=items.filter(item=> item.id!==id)
