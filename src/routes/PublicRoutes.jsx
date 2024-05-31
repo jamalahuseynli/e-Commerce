@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Layout from '../layout/Layout'
 import HomePage from '../pages/Index/HomePage';
@@ -12,16 +12,19 @@ import Basket from '../pages/Basket/Basket';
 import Register from '../pages/user/Register';
 import Login from '../pages/user/Login';
 import { StepsProvider } from '../context/StepsContext';
+import { AuthContext } from '../context/AuthContext';
 
-const PublicRoutes = ({ isAuth }) => {
+const PublicRoutes = () => {
 
-
+    const {token}=useContext(AuthContext)
     return (
         <StepsProvider>
             <CartProvider>
-                <Layout isAuth={isAuth}>
+                <Layout>
                     <Routes>
-                        <Route path="/" element={<HomePage />} />
+                        {!token ? <Route path="/" element={<Login />} /> :
+                            <Route path="/" element={<HomePage />} />
+                        }
                         <Route path="/products" element={<Products />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/products/:id" element={<Details />} />

@@ -13,12 +13,16 @@ const AuthProvider = ({ children }) => {
         password: ""
     })
 
+    const [token,setToken]=useState(localStorage.getItem("token") || "")
+
+
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
             const { data } = await axios.post("https://fakestoreapi.com/auth/login", loggedUser)
+            setToken(data.token)
             localStorage.setItem("token", data.token)
             console.log(data.token);
             navigate("/products")
@@ -28,7 +32,7 @@ const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ handleSubmit, setLoggedUser, loggedUser }}>
+        <AuthContext.Provider value={{ handleSubmit, setLoggedUser, loggedUser, token }}>
             {children}
         </AuthContext.Provider>
     )

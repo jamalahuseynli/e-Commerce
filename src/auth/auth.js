@@ -1,0 +1,1 @@
+//auth metodu burda for getting user data on header or profile section

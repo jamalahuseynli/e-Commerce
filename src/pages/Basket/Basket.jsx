@@ -9,7 +9,7 @@ const Basket = () => {
   const { items, removefromCart, updateProductCount } = useContext(CartContext)
 
   if (items.length === 0) {
-    return <div className='alert alert-danger w-25 mt-5 m-auto'>Cart is empty</div>
+    return <div className='alert alert-danger w-25 my-5 m-auto'>Cart is empty</div>
   }
 
   console.log(items);

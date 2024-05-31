@@ -12,13 +12,12 @@ if (localStorage.getItem("products") === null) {
 
 function App() {
 
-  const [isAuth, setIsAuth] = useState(false)
 
   return (
     <div className="App">
       <BrowserRouter>
         <AuthProvider>
-          {<PublicRoutes isAuth={isAuth} />}
+          <PublicRoutes/>
         </AuthProvider>
       </BrowserRouter>
 

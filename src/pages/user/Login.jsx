@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { TextField, Button } from '@mui/material'
 import { AuthContext } from '../../context/AuthContext'
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
-
+import './login.css'
 
 
 const Login = () => {
@@ -27,8 +27,8 @@ const Login = () => {
           onChange={(e)=>setLoggedUser({...loggedUser, username:e.target.value})}
           
         />
-        <div className="pass-cont">
-          <TextField required label="Password" variant="outlined"
+        <div className="pass-cont mt-3">
+          <TextField className='' required label="Password" variant="outlined"
             type={showPassword ? 'text' : 'password'}
             value={loggedUser.password}
             onChange={(e)=>setLoggedUser({...loggedUser, password:e.target.value})}
@@ -39,7 +39,7 @@ const Login = () => {
           </span>
         </div>
 
-        <Button onClick={(e)=>handleSubmit(e)}  className='login-btn'>
+        <Button onClick={(e)=>handleSubmit(e)}  id='login-btn'>
           Login
         </Button>
 
